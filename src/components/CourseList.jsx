@@ -1,15 +1,12 @@
 import React from "react";
+import "./CourseList.css";
+import CourseCard from "./CourseCard";
 
 const CourseList = ({ courses }) => {
 	return (
-		<div>
+		<div className='course-list'>
 			{Object.entries(courses).map(([id, course]) => {
-				return (
-					<div
-						key={
-							id
-						}>{`${course.term} CS ${course.number}: ${course.title}}`}</div>
-				);
+				return <CourseCard key={id} course={course} />;
 			})}
 		</div>
 	);
