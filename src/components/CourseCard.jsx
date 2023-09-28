@@ -2,7 +2,6 @@ import React from "react";
 import "./CourseCard.css";
 
 const CourseCard = ({ course }) => {
-	console.log(course);
 	return (
 		<div className='card m-1 p-2'>
 			<div className='card-body d-flex flex-column justify-content-between'>
