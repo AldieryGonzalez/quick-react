@@ -22,7 +22,7 @@ const CourseCard = ({ cid, course, isSelected, setSelected }) => {
 				isSelected ? " course-card-selected" : ""
 			}`}
 			onClick={(e) => handleClick(e)}>
-			<div className='card-body d-flex flex-column justify-content-between'>
+			<div className='card-body d-flex flex-column justify-content-between w-100'>
 				<div>
 					<h5 className='card-title'>{`CS ${course.number}`}</h5>
 					<p className='card-text'>{`${course.title}`}</p>
