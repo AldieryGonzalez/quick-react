@@ -1,9 +1,27 @@
 import React from "react";
 import "./CourseCard.css";
+import { Button } from "bootstrap";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ cid, course, isSelected, setSelected }) => {
+	const handleClick = (e) => {
+		if (isSelected) {
+			setSelected((prev) => {
+				const { [cid]: temp, ...rest } = prev;
+				return rest;
+			});
+		} else {
+			setSelected((prev) => {
+				return { ...prev, [cid]: course };
+			});
+		}
+	};
+
 	return (
-		<div className='card m-1 p-1'>
+		<button
+			className={`card m-1 p-1 course-card${
+				isSelected ? " course-card-selected" : ""
+			}`}
+			onClick={(e) => handleClick(e)}>
 			<div className='card-body d-flex flex-column justify-content-between'>
 				<div>
 					<h5 className='card-title'>{`CS ${course.number}`}</h5>
@@ -16,7 +34,7 @@ const CourseCard = ({ course }) => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</button>
 	);
 };
 

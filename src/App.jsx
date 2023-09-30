@@ -12,6 +12,7 @@ import { useJsonQuery } from "./utilities/fetch";
 
 const App = () => {
 	const [term, setTerm] = useState("Fall");
+	const [selected, setSelected] = useState({ F101: 0 });
 
 	const [data, isLoading, error] = useJsonQuery(
 		"https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php"
@@ -26,7 +27,12 @@ const App = () => {
 					setTerm={setTerm}
 				/>
 				<div className='p-3'>
-					<CourseList term={term} courses={data.courses} />
+					<CourseList
+						term={term}
+						courses={data.courses}
+						selected={selected}
+						setSelected={setSelected}
+					/>
 				</div>
 			</>
 		);
