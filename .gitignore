@@ -5,6 +5,10 @@
 .idea
 **/node_modules/*
 
+## Build-Deploy-Distribution
+dist/
+build/
+
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
