@@ -15,6 +15,11 @@
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.course-card-conflicted  {
+    box-shadow: 0 0 15px 1px inset rgba(250, 2, 2, 0.8);
+    cursor: not-allowed !important;
+}
+
 .course-card::after {
     content: "";
     border-radius: 5px;

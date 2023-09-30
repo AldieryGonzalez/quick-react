@@ -3,7 +3,7 @@ import React from "react";
 const CourseTable = ({ courses, term }) => {
 	return (
 		<>
-			<h3>{term}</h3>
+			<h3>{`${term} Courses`}</h3>
 			<table className='table table-hover table-striped'>
 				<thead>
 					<tr>

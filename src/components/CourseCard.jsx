@@ -2,7 +2,7 @@ import React from "react";
 import "./CourseCard.css";
 import { Button } from "bootstrap";
 
-const CourseCard = ({ cid, course, isSelected, setSelected }) => {
+const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 	const handleClick = (e) => {
 		if (isSelected) {
 			setSelected((prev) => {
@@ -20,7 +20,8 @@ const CourseCard = ({ cid, course, isSelected, setSelected }) => {
 		<button
 			className={`card m-1 p-1 course-card${
 				isSelected ? " course-card-selected" : ""
-			}`}
+			}${conflicted ? " course-card-conflicted" : ""}`}
+			disabled={conflicted}
 			onClick={(e) => handleClick(e)}>
 			<div className='card-body d-flex flex-column justify-content-between w-100'>
 				<div>
