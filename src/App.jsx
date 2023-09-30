@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Banner from "./Components/Banner";
+import Navbar from "./components/Navbar";
 import CourseList from "./components/CourseList";
 import LoadBanner from "./components/LoadBanner";
 import LoadCourseList from "./components/LoadCourseList";
@@ -11,7 +11,7 @@ import LoadCourseList from "./components/LoadCourseList";
 import { useJsonQuery } from "./utilities/fetch";
 
 const App = () => {
-	const [count, setCount] = useState(0);
+	const [term, setTerm] = useState("Fall");
 
 	const [data, isLoading, error] = useJsonQuery(
 		"https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php"
@@ -19,10 +19,16 @@ const App = () => {
 
 	if (!isLoading && !error)
 		return (
-			<div className='p-4'>
-				<Banner title={data.title} />
-				<CourseList courses={data.courses} />
-			</div>
+			<>
+				<Navbar
+					title={data.title}
+					currentTerm={term}
+					setTerm={setTerm}
+				/>
+				<div className='p-3'>
+					<CourseList term={term} courses={data.courses} />
+				</div>
+			</>
 		);
 	else
 		return (
