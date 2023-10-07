@@ -3,11 +3,11 @@ import { Outlet } from "react-router";
 import Navbar from "./Navbar";
 import { useJsonQuery } from "../utilities/fetch";
 import Error from "../pages/Error/Error";
+import { useDbData } from "../utilities/firebase";
 
 const MainLayout = () => {
-	const [data, isLoading, error] = useJsonQuery(
-		"https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php"
-	);
+	const [data, error] = useDbData("/");
+	const isLoading = data === undefined;
 	return (
 		<>
 			<Navbar title={"CS Course Planner"} />

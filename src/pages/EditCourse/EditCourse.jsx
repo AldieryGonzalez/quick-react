@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
 import { useFormData } from "../../utilities/useFormData";
+import { useDbUpdate } from "../../utilities/firebase";
 
 const EditCourse = () => {
 	const { isloading, courses } = useOutletContext();
 	const { id } = useParams();
+	const [updateData, result] = useDbUpdate("/");
 	const validateUserData = (key, val) => {
 		switch (key) {
 			case "title":
