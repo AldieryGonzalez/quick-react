@@ -6,7 +6,7 @@ import { useDbUpdate } from "../../utilities/firebase";
 const EditCourse = () => {
 	const { isloading, courses } = useOutletContext();
 	const { id } = useParams();
-	const [updateData, result] = useDbUpdate("/");
+	const [updateData, result] = useDbUpdate(`/courses/${id}`);
 	const validateUserData = (key, val) => {
 		switch (key) {
 			case "title":
@@ -36,6 +36,7 @@ const EditCourse = () => {
 		evt.preventDefault();
 		if (!state.errors) {
 			console.log(state.values);
+			updateData(state.values);
 		}
 	};
 
