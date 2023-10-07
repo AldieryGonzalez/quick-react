@@ -1,7 +1,9 @@
 import React from "react";
 import "./CourseCard.css";
+import { useNavigate } from "react-router";
 
 const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
+	const navigate = useNavigate();
 	const handleClick = (e) => {
 		if (isSelected) {
 			setSelected((prev) => {
@@ -16,6 +18,7 @@ const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 	};
 	const handleEdit = (e) => {
 		e.stopPropagation();
+		navigate(`/edit/${cid}`);
 	};
 
 	return (
