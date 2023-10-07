@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useOutletContext } from "react-router";
 
 import CourseList from "../../components/CourseList";
-import Footer from "../../components/Footer";
-import Modal from "../../components/Modal";
-import CoursePlan from "../../components/CoursePlan";
+import Footer from "./Footer";
+import Modal from "./Modal";
+import CoursePlan from "./CoursePlan";
 import LoadCourseList from "../../components/LoadCourseList";
 
 const CoursePage = () => {

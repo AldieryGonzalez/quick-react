@@ -1,5 +1,5 @@
 import React from "react";
-import gif from "../assets/AddCourses.gif";
+import gif from "../../assets/AddCourses.gif";
 import CourseTable from "./CourseTable";
 
 const CoursePlan = ({ courses }) => {
