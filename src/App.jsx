@@ -13,38 +13,19 @@ import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import CoursePlan from "./components/CoursePlan";
 
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import CoursePage from "./pages/CoursePage";
+
 const App = () => {
-	const [term, setTerm] = useState("Fall");
-	const [selected, setSelected] = useState({});
-	const [open, setOpen] = useState(false);
 	const [data, isLoading, error] = useJsonQuery(
 		"https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php"
 	);
-
-	const openModal = () => setOpen(true);
-	const closeModal = () => setOpen(false);
 
 	if (!isLoading && !error)
 		return (
 			<>
 				<Navbar title={data.title} />
-				<Modal open={open} close={closeModal} title='Course Plan'>
-					<CoursePlan courses={selected} term={term} />
-				</Modal>
-				<div className='p-3 mb-5'>
-					<CourseList
-						term={term}
-						courses={data.courses}
-						selected={selected}
-						setSelected={setSelected}
-					/>
-				</div>
-				<Footer
-					selected={selected}
-					currentTerm={term}
-					setTerm={setTerm}
-					openModal={openModal}
-				/>
+				<CoursePage courses={data.courses} />
 			</>
 		);
 	else
