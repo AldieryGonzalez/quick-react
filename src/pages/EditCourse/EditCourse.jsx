@@ -5,7 +5,24 @@ import { useFormData } from "../../utilities/useFormData";
 const EditCourse = () => {
 	const { isloading, courses } = useOutletContext();
 	const { id } = useParams();
-	const [state, change, setState] = useFormData();
+	const validateUserData = (key, val) => {
+		switch (key) {
+			case "title":
+				return /(^\w\w)/.test(val)
+					? ""
+					: "Must be least two characters";
+			case "meets":
+				return /^((M|Tu|W|Th|F)+ ([01]\d|2[0-3]):[0-5]\d-([01]\d|2[0-3]):[0-5]\d)?$/.test(
+					val
+				)
+					? ""
+					: "Must contain days and start-end, e.g., MWF 12:00-13:20";
+			default:
+				return "";
+		}
+	};
+
+	const [state, change, setState] = useFormData(validateUserData);
 	useEffect(() => {
 		if (courses) {
 			const course = courses[id];
