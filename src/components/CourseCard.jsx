@@ -2,7 +2,14 @@ import React from "react";
 import "./CourseCard.css";
 import { useNavigate } from "react-router";
 
-const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
+const CourseCard = ({
+	cid,
+	course,
+	conflicted,
+	isSelected,
+	setSelected,
+	canEdit,
+}) => {
 	const navigate = useNavigate();
 	const handleClick = (e) => {
 		if (isSelected) {
@@ -28,7 +35,9 @@ const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 			}${conflicted ? " course-card-conflicted" : ""}`}
 			disabled={conflicted}
 			onClick={(e) => handleClick(e)}>
-			<div className='course-edit-button' onClick={(e) => handleEdit(e)}>
+			<div
+				className={`course-edit-button ${canEdit ? "" : "hide"}`}
+				onClick={(e) => handleEdit(e)}>
 				<i className='bi bi-pencil-square w-100'></i>
 			</div>
 			<div className='card-body d-flex flex-column justify-content-between w-100'>

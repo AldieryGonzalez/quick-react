@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "./Navbar";
-import { useJsonQuery } from "../utilities/fetch";
 import Error from "../pages/Error/Error";
 import { useDbData } from "../utilities/firebase";
 

@@ -1,7 +1,8 @@
 import React from "react";
 
 const Error = ({ error }) => {
-	return <div>{error}</div>;
+	console.log(Object.values(error));
+	return <div>{error.code}</div>;
 };
 
 export default Error;

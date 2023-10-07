@@ -7,6 +7,7 @@ const EditCourse = () => {
 	const { isloading, courses } = useOutletContext();
 	const { id } = useParams();
 	const [updateData, result] = useDbUpdate(`/courses/${id}`);
+	const navigate = useNavigate();
 	const validateUserData = (key, val) => {
 		switch (key) {
 			case "title":
@@ -27,6 +28,9 @@ const EditCourse = () => {
 	const [state, change, setState] = useFormData(validateUserData);
 	useEffect(() => {
 		if (courses) {
+			if (!(id in courses)) {
+				navigate("/page-not-found");
+			}
 			const course = courses[id];
 			setState({ values: { title: course.title, meets: course.meets } });
 		}
@@ -35,8 +39,8 @@ const EditCourse = () => {
 	const submit = (evt) => {
 		evt.preventDefault();
 		if (!state.errors) {
-			console.log(state.values);
 			updateData(state.values);
+			console.log(result);
 		}
 	};
 
@@ -59,6 +63,12 @@ const EditCourse = () => {
 				state={state}
 				change={change}
 			/>
+			{result ? (
+				<div className='alert alert-warning' role='alert'>
+					{result.message}
+				</div>
+			) : null}
+
 			<ButtonBar message={""} />
 		</form>
 	);
