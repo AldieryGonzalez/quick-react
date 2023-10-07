@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import CourseList from "../components/CourseList";
-import Footer from "../components/Footer";
-import Modal from "../components/Modal";
-import CoursePlan from "../components/CoursePlan";
+import { useOutletContext } from "react-router";
 
-const CoursePage = ({ courses }) => {
+import CourseList from "../../components/CourseList";
+import Footer from "../../components/Footer";
+import Modal from "../../components/Modal";
+import CoursePlan from "../../components/CoursePlan";
+import LoadCourseList from "../../components/LoadCourseList";
+
+const CoursePage = () => {
+	const { isLoading, courses } = useOutletContext();
 	const [term, setTerm] = useState("Fall");
 	const [selected, setSelected] = useState({});
 	const [open, setOpen] = useState(false);
 	const openModal = () => setOpen(true);
 	const closeModal = () => setOpen(false);
+
+	if (isLoading) return <LoadPage />;
 	return (
 		<>
 			<Modal open={open} close={closeModal} title='Course Plan'>
@@ -29,6 +35,16 @@ const CoursePage = ({ courses }) => {
 				setTerm={setTerm}
 				openModal={openModal}
 			/>
+		</>
+	);
+};
+
+const LoadPage = () => {
+	return (
+		<>
+			<div className='p-3 mb-5'>
+				<LoadCourseList />
+			</div>
 		</>
 	);
 };
