@@ -21,14 +21,14 @@ const CoursePage = () => {
 			<Modal open={open} close={closeModal} title='Course Plan'>
 				<CoursePlan courses={selected} term={term} />
 			</Modal>
-			<div className='p-3 mb-5'>
-				<CourseList
-					term={term}
-					courses={courses}
-					selected={selected}
-					setSelected={setSelected}
-				/>
-			</div>
+
+			<CourseList
+				term={term}
+				courses={courses}
+				selected={selected}
+				setSelected={setSelected}
+			/>
+
 			<Footer
 				selected={selected}
 				currentTerm={term}

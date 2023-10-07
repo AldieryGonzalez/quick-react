@@ -1,6 +1,5 @@
 import React from "react";
 import "./CourseCard.css";
-import { Button } from "bootstrap";
 
 const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 	const handleClick = (e) => {
@@ -15,6 +14,9 @@ const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 			});
 		}
 	};
+	const handleEdit = (e) => {
+		e.stopPropagation();
+	};
 
 	return (
 		<button
@@ -23,6 +25,9 @@ const CourseCard = ({ cid, course, conflicted, isSelected, setSelected }) => {
 			}${conflicted ? " course-card-conflicted" : ""}`}
 			disabled={conflicted}
 			onClick={(e) => handleClick(e)}>
+			<div className='course-edit-button' onClick={(e) => handleEdit(e)}>
+				<i className='bi bi-pencil-square w-100'></i>
+			</div>
 			<div className='card-body d-flex flex-column justify-content-between w-100'>
 				<div>
 					<h5 className='card-title'>{`CS ${course.number}`}</h5>

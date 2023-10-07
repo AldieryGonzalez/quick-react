@@ -11,16 +11,18 @@ const MainLayout = () => {
 	return (
 		<>
 			<Navbar title={"CS Course Planner"} />
-			{error ? (
-				<Error error={error} />
-			) : (
-				<Outlet
-					context={{
-						isLoading: isLoading,
-						courses: data ? data.courses : null,
-					}}
-				/>
-			)}
+			<div className='p-3 mb-5'>
+				{error ? (
+					<Error error={error} />
+				) : (
+					<Outlet
+						context={{
+							isLoading: isLoading,
+							courses: data ? data.courses : null,
+						}}
+					/>
+				)}
+			</div>
 		</>
 	);
 };

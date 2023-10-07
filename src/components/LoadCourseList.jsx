@@ -7,7 +7,7 @@ const LoadCourseList = () => {
 	return (
 		<div className='course-list'>
 			{Object.entries(courses).map((item, index) => {
-				return <LoadCourseCard />;
+				return <LoadCourseCard key={index} />;
 			})}
 		</div>
 	);
