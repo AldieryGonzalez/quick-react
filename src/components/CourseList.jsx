@@ -2,10 +2,9 @@ import React from "react";
 import "./CourseList.css";
 import CourseCard from "./CourseCard";
 import isConflicted from "../utilities/timeConflicts";
-import { useAuthState } from "../utilities/firebase";
-
+import { useAuth } from "../contexts/AuthContext";
 const CourseList = ({ courses, term, selected, setSelected }) => {
-	const [user] = useAuthState();
+	const { currentUser } = useAuth();
 	return (
 		<div className='course-list'>
 			{Object.entries(courses)
@@ -19,7 +18,7 @@ const CourseList = ({ courses, term, selected, setSelected }) => {
 							conflicted={isConflicted(course, selected)}
 							isSelected={id in selected}
 							setSelected={setSelected}
-							canEdit={!!user}
+							canEdit={!!currentUser}
 						/>
 					);
 				})}

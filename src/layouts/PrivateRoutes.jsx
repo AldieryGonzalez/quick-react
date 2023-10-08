@@ -1,11 +1,11 @@
 import { Navigate, Outlet, useOutletContext } from "react-router-dom";
-import { useAuthState } from "../utilities/firebase";
+import { useAuth } from "../contexts/AuthContext";
 
 const PrivateRoutes = () => {
 	const { isloading, courses } = useOutletContext();
-	const [user] = useAuthState();
-	console.log(user);
-	return user ? (
+	const { currentUser } = useAuth();
+	console.log(currentUser);
+	return currentUser ? (
 		<Outlet
 			context={{
 				isloading: isloading,

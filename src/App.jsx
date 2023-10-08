@@ -14,8 +14,10 @@ const App = () => {
 		<Routes>
 			<Route path='/' element={<MainLayout />}>
 				<Route index element={<CoursePage />} />
-				<Route path='/edit' element={<EditCourses />} />
-				<Route path='/edit/:id' element={<EditCourse />} />
+				<Route path='/edit' element={<PrivateRoutes />}>
+					<Route index element={<EditCourses />} />
+					<Route path='/edit/:id' element={<EditCourse />} />
+				</Route>
 			</Route>
 			<Route path='*' element={<MainLayout />}>
 				<Route
@@ -30,10 +32,11 @@ const App = () => {
 };
 
 {
-	/* <Route path='/edit' element={<PrivateRoutes />}>
-<Route index element={<EditCourses />} />
-<Route path='/edit/:id' element={<EditCourse />} />
-</Route> */
+}
+
+{
+	/* <Route path='/edit' element={<EditCourses />} />
+<Route path='/edit/:id' element={<EditCourse />} /> */
 }
 
 export default App;

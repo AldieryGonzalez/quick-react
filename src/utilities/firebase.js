@@ -22,6 +22,7 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 const database = getDatabase(firebase);
+export const auth = getAuth(firebase);
 
 export const signInWithGoogle = () => {
 	signInWithPopup(getAuth(firebase), new GoogleAuthProvider());
@@ -29,14 +30,6 @@ export const signInWithGoogle = () => {
 
 const firebaseSignOut = () => signOut(getAuth(firebase));
 export { firebaseSignOut as signOut };
-
-export const useAuthState = () => {
-	const [user, setUser] = useState();
-
-	useEffect(() => onAuthStateChanged(getAuth(firebase), setUser), []);
-
-	return [user];
-};
 
 export const useDbData = (path) => {
 	const [data, setData] = useState();
