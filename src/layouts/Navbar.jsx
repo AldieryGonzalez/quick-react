@@ -17,12 +17,13 @@ const SignOutButton = () => (
 );
 
 const AuthButton = () => {
-	const { currentUser } = useAuth();
+	const { currentUser, profile } = useAuth();
 	return currentUser ? <SignOutButton /> : <SignInButton />;
 };
 
 const Navbar = ({ title }) => {
-	const { currentUser } = useAuth();
+	const { currentUser, profile } = useAuth();
+	console.log(profile);
 	return (
 		<nav className='d-flex justify-content-between align-items-center px-4 px-2 bg-info text-white'>
 			<h1>{title}</h1>
@@ -30,7 +31,7 @@ const Navbar = ({ title }) => {
 				<NavLink className='text-white mx-3' to={"/"}>
 					<h4>Home</h4>
 				</NavLink>
-				{currentUser ? (
+				{profile != undefined && profile.isAdmin ? (
 					<NavLink className='text-white mx-3' to={"/edit"}>
 						<h4>Edit</h4>
 					</NavLink>

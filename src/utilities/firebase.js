@@ -4,7 +4,6 @@ import { getDatabase, onValue, ref, update } from "firebase/database";
 import {
 	getAuth,
 	GoogleAuthProvider,
-	onAuthStateChanged,
 	signInWithPopup,
 	signOut,
 } from "firebase/auth";
@@ -21,7 +20,7 @@ const firebaseConfig = {
 };
 
 const firebase = initializeApp(firebaseConfig);
-const database = getDatabase(firebase);
+export const database = getDatabase(firebase);
 export const auth = getAuth(firebase);
 
 export const signInWithGoogle = () => {

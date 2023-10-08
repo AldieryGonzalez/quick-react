@@ -4,7 +4,8 @@ import CourseCard from "./CourseCard";
 import isConflicted from "../utilities/timeConflicts";
 import { useAuth } from "../contexts/AuthContext";
 const CourseList = ({ courses, term, selected, setSelected }) => {
-	const { currentUser } = useAuth();
+	const { currentUser, profile } = useAuth();
+	console.log(profile);
 	return (
 		<div className='course-list'>
 			{Object.entries(courses)
@@ -18,7 +19,7 @@ const CourseList = ({ courses, term, selected, setSelected }) => {
 							conflicted={isConflicted(course, selected)}
 							isSelected={id in selected}
 							setSelected={setSelected}
-							canEdit={!!currentUser}
+							canEdit={profile && profile.isAdmin}
 						/>
 					);
 				})}
