@@ -5,7 +5,6 @@ import isConflicted from "../utilities/timeConflicts";
 import { useAuth } from "../contexts/AuthContext";
 const CourseList = ({ courses, term, selected, setSelected }) => {
 	const { currentUser, profile } = useAuth();
-	console.log(profile);
 	return (
 		<div className='course-list'>
 			{Object.entries(courses)

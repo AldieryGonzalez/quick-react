@@ -23,7 +23,6 @@ const AuthButton = () => {
 
 const Navbar = ({ title }) => {
 	const { currentUser, profile } = useAuth();
-	console.log(profile);
 	return (
 		<nav className='d-flex justify-content-between align-items-center px-4 px-2 bg-info text-white'>
 			<h1>{title}</h1>

@@ -21,6 +21,7 @@ const CoursePage = () => {
 			<Modal open={open} close={closeModal} title='Course Plan'>
 				<CoursePlan courses={selected} term={term} />
 			</Modal>
+			<h1 data-cy='course'>{`${term} Classes`}</h1>
 
 			<CourseList
 				term={term}
